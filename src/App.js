@@ -17,7 +17,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>Have a laugh</h1>
+      <h1>Have a laugh!</h1>
       <JokesForm />
       {
         (error !== "") && <h3>{error}</h3>

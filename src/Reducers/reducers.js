@@ -1,11 +1,12 @@
 import { data } from './../data/jokesData';
 
-import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from './../Actions/actions'
+import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR, SEARCH_SUBMITTED } from './../Actions/actions'
 
 const initialState = {
     jokes: data,
     loading: false,
-    error:""
+    error:"",
+    hasSearched: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,9 +27,13 @@ const reducer = (state = initialState, action) => {
         case FETCH_ERROR:
             return {
                 ...state,
-                loading: true,
-                jokes: "",
-                error: "err: the joke went over your head",
+                loading: false,
+                error: action.payload
+            }
+        case SEARCH_SUBMITTED:
+            return {
+                ...state,
+                hasSearched: true
             }
         default:
             return(state);
